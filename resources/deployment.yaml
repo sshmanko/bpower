@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bpower
+  labels:
+    app: bpower
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bpower
+  template:
+    metadata:
+      labels:
+        app: bpower
+    spec:
+      containers:
+      - name: bpower-app
+        image: bpower/app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
